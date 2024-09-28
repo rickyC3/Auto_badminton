@@ -3,17 +3,12 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 import time
-from bs4 import BeautifulSoup
 import base64
-from PIL import Image
-import pytesseract
-import numpy as np
-from de_noise import noise_remove_pil
 import json
 from selenium.webdriver.common.keys import Keys
 import pyautogui
 
-
+#joyce
 def Search():
     with open('D:\Ricky\program\Auto_badminton\cookie.json') as f:
         cookies = json.load(f)
@@ -29,33 +24,36 @@ def Search():
     for cookie in cookies:
         driver.add_cookie(cookie)
     driver.refresh()
-    time.sleep(3)
-    '''
+    time.sleep(1)
+    
     while (1):
         t = time.time()
         tt =(time.localtime(t))
-        if (tt.tm_hour != 0):
-            time.sleep(0.01)
-    '''
-    
-
+        if (tt.tm_hour == 0):break
+        time.sleep(0.01)
+        if (tt.tm_sec > 50):
+            print(time.asctime(tt))
+        
+    time.sleep(0.1)
     driver.refresh()
     
 
     #code source from:https://steam.oxxostudio.tw/category/python/spider/selenium.html
     
-    book = driver.find_element(By.XPATH,'//*[@value="613"]').click() # 013
+    book = driver.find_element(By.XPATH,'//*[@value="011"]').click() # 013
+
+    pyautogui.press("enter") 
+    time.sleep(0.5)
+        
+    book = driver.find_element(By.XPATH,'//*[@value="012"]').click() # 013
 
     pyautogui.press("enter") 
     time.sleep(0.5)
 
-    book = driver.find_element(By.XPATH,'//*[@value="614"]').click() # 013
-    pyautogui.press("enter") 
-    time.sleep(0.5)   
     
     driver.quit()
 
-#Search()
+Search()
 
 
 
